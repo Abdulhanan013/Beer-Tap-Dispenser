@@ -1,17 +1,19 @@
 class User < ApplicationRecord
     # Include BCrypt for password encryption
     has_secure_password
+    has_many :dispensers
+    has_many :dispenser_events
   
     # Validate presence of name, email, and role
     validates :name, :email, :role, presence: true
   
     # Ensure unique email
-    validates :email, uniqueness: true
+    validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
-    # Define available roles
-    ROLES = %w[attendee admin]
+    # Define the role as an enum
+    enum role: { attendee: 'attendee', admin: 'admin' }
   
     # Validate role is one of the available roles
-    validates :role, inclusion: { in: ROLES }
+    validates :role, inclusion: { in: roles.keys }
   end
   

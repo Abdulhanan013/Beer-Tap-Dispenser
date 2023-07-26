@@ -16,21 +16,27 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_204201) do
 
   create_table "dispenser_events", force: :cascade do |t|
     t.bigint "dispenser_id", null: false
-    t.boolean "status"
-    t.datetime "opened_at"
-    t.datetime "closed_at"
-    t.float "total_price"
+    t.bigint "user_id"
+    t.string "event_type"
+    t.datetime "start_time", precision: nil
+    t.datetime "end_time", precision: nil
+    t.float "liters"
+    t.float "price"
+    t.float "time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dispenser_id"], name: "index_dispenser_events_on_dispenser_id"
+    t.index ["user_id"], name: "index_dispenser_events_on_user_id"
   end
 
   create_table "dispensers", force: :cascade do |t|
     t.float "flow_volume"
     t.string "name"
-    t.float "price"
+    t.boolean "status", default: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dispensers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +49,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_204201) do
   end
 
   add_foreign_key "dispenser_events", "dispensers"
+  add_foreign_key "dispenser_events", "users"
+  add_foreign_key "dispensers", "users"
 end
