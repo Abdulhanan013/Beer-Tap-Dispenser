@@ -7,7 +7,6 @@ class DispenserService
   end
 
   def mark_tap_open
-    byebug
     dispenser.dispenser_events.create(event_type: 'open', start_time: Time.now, user_id: current_user.id)
     dispenser.update(status: true)
   end

@@ -8,7 +8,6 @@ class DispensersController < ApplicationController
   end
 
   def create
-    byebug
     if @current_user.admin?
       @dispenser = Dispenser.new(dispenser_params)
       @dispenser.user_id = @current_user.id
@@ -32,7 +31,6 @@ class DispensersController < ApplicationController
       service.mark_tap_open
       render json: { message: 'Dispenser tap opened successfully.' }
     elsif params[:status] == 'close'
-      byebug
       service.mark_tap_close
       render json: { message: 'Dispenser tap closed successfully.' }
     else
