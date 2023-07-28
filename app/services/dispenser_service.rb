@@ -16,23 +16,21 @@ class DispenserService
     return if event.nil? || event.end_time.present?
 
     event.update(event_type: 'close', end_time: Time.now)
-    calculate_total_price(event)
     dispenser.update(status: false)
+    calculate_event_details(event)
   end
 
   private
 
-  def calculate_total_price(event)
+  def calculate_event_details(event)
     time_diff_seconds = (event.end_time - event.start_time).to_i
-    total_liters = dispenser.flow_volume * time_diff_seconds
-    total_price = calculate_price(total_liters)
-    event.update(total_liters: total_liters, total_price: total_price)
+    liters = dispenser.flow_volume * time_diff_seconds
+    price = calculate_price(liters)
+    event.update(liters: liters, price: price)
   end
 
-  def calculate_price(total_liters)
-    # Implement the logic to calculate the price based on the total_liters.
-    # You can set the pricing rules here.
-    # For simplicity, let's assume $1 per liter.
-    total_liters
+  def calculate_price(liters)
+    price = liters * dispenser.price_per_liter
+    price
   end
 end

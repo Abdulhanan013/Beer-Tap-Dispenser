@@ -38,13 +38,16 @@ gem "bootsnap", require: false
 
 gem 'bcrypt', '~> 3.1.7' # For password encryption
 gem 'jwt', '~> 2.2'      # For JSON Web Tokens
-gem 'byebug'
 
 
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'byebug'
+  gem 'timecop'
+  gem 'shoulda-matchers', '~> 5.0'
+
 end
 
 group :development do
@@ -53,5 +56,7 @@ group :development do
   %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
     gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main'
   end
+  gem 'shoulda-matchers', '~> 5.0'
+
 end
 

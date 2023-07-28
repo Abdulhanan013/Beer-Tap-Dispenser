@@ -11,7 +11,7 @@ class User < ApplicationRecord
     validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   
     # Define the role as an enum
-    enum role: { attendee: 'attendee', admin: 'admin' }
+    enum role: { attendee: 'attendee', admin: 'admin', promoter: 'promoter' }
   
     # Validate role is one of the available roles
     validates :role, inclusion: { in: roles.keys }

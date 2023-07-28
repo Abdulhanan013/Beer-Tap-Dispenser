@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_204201) do
 
   create_table "dispensers", force: :cascade do |t|
     t.float "flow_volume"
+    t.float "price_per_liter"
     t.string "name"
     t.boolean "status", default: false
     t.bigint "user_id"
