@@ -1,0 +1,349 @@
+{
+	"info": {
+		"_postman_id": "4c62f8fc-9d0f-4043-ab0e-556fccceaf60",
+		"name": "Tap-Despenser",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19146037",
+		"_collection_link": "https://www.postman.com/hanan6618/workspace/test-task/collection/19146037-4c62f8fc-9d0f-4043-ab0e-556fccceaf60?action=share&creator=19146037&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Create admin user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"admin\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create attendee user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\": {\n    \"name\": \"attendee \",\n    \"email\": \"attendee@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"attendee\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create promoter user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"user\": {\n    \"name\": \"promoter\",\n    \"email\": \"promoter@example.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"role\": \"promoter\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create despenser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1zLKZQo8TtSY6ZdRmpfrELucXi7J0lsTVad-BJ4eIIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"dispenser\": {\n    \"flow_volume\": 0.5,\n    \"name\": \"abcd\",\n    \"price_per_liter\": 2\n  }\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dispensers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispensers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Open dispenser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1zLKZQo8TtSY6ZdRmpfrELucXi7J0lsTVad-BJ4eIIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"open\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dispensers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispensers",
+						":id"
+					],
+					"variable": [
+						{
+							"id": 0,
+							"key": "id",
+							"value": "2",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "show dispenser details",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1zLKZQo8TtSY6ZdRmpfrELucXi7J0lsTVad-BJ4eIIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"open\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dispensers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispensers",
+						":id"
+					],
+					"variable": [
+						{
+							"id": 0,
+							"key": "id",
+							"value": "2",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "total stats for event",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1zLKZQo8TtSY6ZdRmpfrELucXi7J0lsTVad-BJ4eIIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"open\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dispensers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispensers",
+						":id"
+					],
+					"variable": [
+						{
+							"id": 0,
+							"key": "id",
+							"value": "1",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "close dispenser Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxfQ.1zLKZQo8TtSY6ZdRmpfrELucXi7J0lsTVad-BJ4eIIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"status\": \"close\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dispensers/:id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dispensers",
+						":id"
+					],
+					"variable": [
+						{
+							"id": 0,
+							"key": "id",
+							"value": "2",
+							"type": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
