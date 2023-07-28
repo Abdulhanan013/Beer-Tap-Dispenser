@@ -1,5 +1,3 @@
-# app/controllers/dispensers_controller.rb
-
 class DispensersController < ApplicationController
 
   def index
